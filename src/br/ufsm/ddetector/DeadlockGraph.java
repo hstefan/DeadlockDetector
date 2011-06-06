@@ -12,18 +12,18 @@ public interface DeadlockGraph<Tn, Ts> {
 	/**
 	 * Creates a connection between origin and and destination. 
 	 */
-	public void createConnection(Tn origin, Tn destination);
+	public void createConnection(Tn origin, Tn destination, Ts symbol);
 	
 	/**
 	 * Attempts to erase a connection between origin and destination.
 	 * @return true if there was such connection, otherwise, false.
 	 */
-	public boolean removeConnection(Tn origin, Tn destination);
+	public boolean removeConnection(Tn origin, Tn destination, Ts symbol);
 	
 	/**
 	 * Checks if there's an connection from origin to destination. 
 	 */
-	public boolean hasConnection(Tn origin, Tn destination);
+	public boolean hasConnection(Tn origin, Tn destination, Ts symbol);
 	
 	/**
 	 * @param node
