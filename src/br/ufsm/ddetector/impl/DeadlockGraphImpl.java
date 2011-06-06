@@ -1,9 +1,17 @@
 package br.ufsm.ddetector.impl;
 
+import java.util.TreeSet;
+
 import br.ufsm.ddetector.DeadlockGraph;
 
 public final class DeadlockGraphImpl implements DeadlockGraph<Integer, Byte> {
 
+	private TreeSet<Byte>[] myAdjMatrix;
+	
+	public DeadlockGraphImpl(int n) {
+		myAdjMatrix = (TreeSet<Byte>[])new Object[n*n];
+	}
+	
 	@Override
 	public void createConnection(Integer origin, Integer destination,
 			Byte symbol) {
