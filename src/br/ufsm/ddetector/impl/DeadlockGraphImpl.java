@@ -8,6 +8,7 @@ public final class DeadlockGraphImpl implements DeadlockGraph<Integer, Byte> {
 
 	private TreeSet<Byte>[] myAdjMatrix;
 	
+	@SuppressWarnings("unchecked")
 	public DeadlockGraphImpl(int n) {
 		myAdjMatrix = (TreeSet<Byte>[])new Object[n*n];
 	}
