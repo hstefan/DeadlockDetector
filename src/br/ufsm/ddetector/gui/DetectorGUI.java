@@ -100,6 +100,7 @@ public class DetectorGUI extends JFrame {
 	    
 	    GraphUtil gu = new GraphUtil();
 	    contentPane.add(gu.getJGraph(g));
-
+	    validate();
+        repaint();
 	}
 }
