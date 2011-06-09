@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.SpringLayout;
@@ -86,6 +87,12 @@ public class DetectorGUI extends JFrame {
 				if(ret == JFileChooser.APPROVE_OPTION) {
 					File f = chooser.getSelectedFile();
 					Parser p = new Parser(f.getAbsolutePath());
+					try {
+						p.processLineByLine();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					ArrayList<Operation> opls = p.getList();
 					GraphBuilder graph = new GraphBuilder(opls);
 					GraphUtil gu = new GraphUtil();
