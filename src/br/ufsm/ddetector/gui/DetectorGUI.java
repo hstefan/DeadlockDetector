@@ -80,6 +80,7 @@ public class DetectorGUI extends JFrame {
 		setContentPane(contentPane);
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
+		setResizable(false);
 	}
 	
 	// Desenha grafo teste

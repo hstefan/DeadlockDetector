@@ -17,8 +17,8 @@ public class GraphUtil {
 	private static final Color     DEFAULT_BG_COLOR = Color.decode("#FAFBFF");
     private static final Dimension DEFAULT_SIZE = new Dimension(700, 500);
     
-    private JGraphModelAdapter m_jgAdapter; 
-    private ListenableGraph g;
+    private JGraphModelAdapter<?, ?> m_jgAdapter; 
+    private ListenableGraph<?, ?> g;
     
     /**
      * Retorna um grafo pronto para ser exibido num frame.
@@ -29,7 +29,7 @@ public class GraphUtil {
      * @param graph grafo de algoritmo
      * @return grafo de desenho
      */
-	public JGraph getJGraph(ListenableGraph graph) {	
+	public JGraph getJGraph(ListenableGraph<?, ?> graph) {	
 		
 		g = graph;
 		
@@ -54,19 +54,19 @@ public class GraphUtil {
 
     private void positionVertexAt(Object vertex, int x, int y) {
         DefaultGraphCell 			cell = m_jgAdapter.getVertexCell(vertex);
-        Map             			attr = cell.getAttributes();
+        Map<?, ?>             			attr = cell.getAttributes();
         SerializableRectangle2D     b    = (SerializableRectangle2D) GraphConstants.getBounds(attr);
 
         GraphConstants.setBounds(attr, new SerializableRectangle2D(x, y, b.width, b.height));
 
-        Map cellAttr = new HashMap<DefaultGraphCell, Map>();
+        Map<DefaultGraphCell, Map> cellAttr = new HashMap<DefaultGraphCell, Map>();
         cellAttr.put(cell, attr);
         m_jgAdapter.edit(cellAttr, null, null, null);
     }  
     
     private void positionVertexes(JGraph jg) {
 		
-    	Set vertexes = g.vertexSet();
+    	Set<?> vertexes = g.vertexSet();
     	int x = 0;
     	int y = 0;
     	
