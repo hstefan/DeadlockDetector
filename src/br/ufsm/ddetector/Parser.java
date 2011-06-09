@@ -21,11 +21,6 @@ public class Parser {
 
     private java.util.ArrayList<Operation>  opList = new java.util.ArrayList<Operation>();
 
-    public static void main(String... aArgs) throws FileNotFoundException {
-        //Parser parser = new Parser("C:\\Temp\\test.txt");
-        //parser.processLineByLine();
-    }
-
     /**
     Constructor.
     @param aFileName full name of an existing, readable file.
