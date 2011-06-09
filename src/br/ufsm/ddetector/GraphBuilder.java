@@ -37,9 +37,11 @@ public class GraphBuilder {
 						graph.removeEdge(obj);
 					}
 				}
-			} else if(op.getOp() == Operation.WRITE) {
-				
-			}
+			} 
 		}
+	}
+	
+	public ListenableDirectedGraph<Integer, Object> getBuiltGraph() {
+		return graph;
 	}
 }
