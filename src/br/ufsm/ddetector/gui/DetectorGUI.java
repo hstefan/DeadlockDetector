@@ -80,6 +80,7 @@ public class DetectorGUI extends JFrame {
 				//contentPane.setFocusable(true);
 				
 				JFileChooser chooser = new JFileChooser();
+				chooser.setCurrentDirectory(new File("."));
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos trs", "trs");
 				chooser.setFileFilter(filter);
 				int ret = chooser.showDialog(null, "Selecione o arquivo.");
