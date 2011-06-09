@@ -13,7 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 
 import javax.swing.SpringLayout;
