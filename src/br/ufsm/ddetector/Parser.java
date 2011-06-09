@@ -18,7 +18,14 @@ public class Parser {
     static final byte WRITE = 2;
     static final byte BLOCK = 3;
     static final byte UNBLOCK = 4;
-    
+
+    private java.util.ArrayList<Operation>  opList = new java.util.ArrayList<Operation>();
+
+    public static void main(String... aArgs) throws FileNotFoundException {
+        //Parser parser = new Parser("C:\\Temp\\test.txt");
+        //parser.processLineByLine();
+    }
+
     /**
     Constructor.
     @param aFileName full name of an existing, readable file.
@@ -34,7 +41,8 @@ public class Parser {
         try {
             //first use a Scanner to get each line
             while (scanner.hasNextLine()) {
-                processLine(scanner.nextLine());
+                Operation oper = processLine(scanner.nextLine());
+                opList.add(oper);
             }
         } finally {
             //ensure the underlying stream is always closed
@@ -86,9 +94,14 @@ public class Parser {
             log("Empty or invalid line. Unable to process.");
             System.exit(1);
         }
-        return null;
         //no need to call scanner.close(), since the source is a String
+        return new Operation((byte)0,0,'x');
     }
+
+    public java.util.ArrayList<Operation> getList() {
+        return opList;
+    }
+
     // PRIVATE
     private final File fFile;
 
