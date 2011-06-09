@@ -1,10 +1,5 @@
 package br.ufsm.ddetector;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -13,13 +8,21 @@ import java.util.Scanner;
  * @author Ikarus
  */
 public class Parser {
-    
+    //CONSTANTS
     static final byte READ = 1;
     static final byte WRITE = 2;
     static final byte BLOCK = 3;
     static final byte UNBLOCK = 4;
-
+    //PRIVATE
+    private final File fFile;
     private java.util.ArrayList<Operation>  opList = new java.util.ArrayList<Operation>();
+
+    /*
+    public static void main(String... aArgs) throws FileNotFoundException {
+        Parser parser = new Parser("C:\\Temp\\test.txt");
+        parser.processLineByLine();
+    }
+    */
 
     /**
     Constructor.
@@ -50,12 +53,12 @@ public class Parser {
     /**
     Overridable method for processing lines in different ways.
 
-    <P>This simple default implementation expects simple name-value pairs, separated by an
-    '=' sign. Examples of valid input :
-    <tt>height = 167cm</tt>
-    <tt>mass =  65kg</tt>
-    <tt>disposition =  "grumpy"</tt>
-    <tt>this is the name = this is the value</tt>
+    <P>This simple default implementation expects operation-transaction-variable format,
+    separated by an ' ' (white space) sign. Examples of valid input :
+    <tt>r 1 x</tt>
+    <tt>w 1 x</tt>
+    <tt>b 2 y</tt>
+    <tt>u 2 y</tt>
      */
     protected Operation processLine(String aLine) {
         //use a second Scanner to parse the content of each line
@@ -86,7 +89,7 @@ public class Parser {
             Operation oper = new Operation(op,trans,var);
             return oper;
         } else {
-            log("Empty or invalid line. Unable to process.");
+            System.out.println("Empty or invalid line. Unable to process.");
             System.exit(1);
         }
         //no need to call scanner.close(), since the source is a String
@@ -95,17 +98,5 @@ public class Parser {
 
     public java.util.ArrayList<Operation> getList() {
         return opList;
-    }
-
-    // PRIVATE
-    private final File fFile;
-
-    private static void log(Object aObject) {
-        System.out.println(String.valueOf(aObject));
-    }
-
-    private String quote(String aText) {
-        String QUOTE = "'";
-        return QUOTE + aText + QUOTE;
     }
 }
